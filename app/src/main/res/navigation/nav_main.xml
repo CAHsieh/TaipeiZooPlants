@@ -21,8 +21,17 @@
     <fragment
         android:id="@+id/plantsFragment"
         android:name="ca.pet.taipeizooplants.plants.PlantsFragment"
-        android:label="Exhibit"
+        android:label="{dynamicTitle}"
         tools:layout="@layout/fragment_exhibit">
+
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+
+        <argument
+            android:name="exhibit"
+            app:argType="ca.pet.taipeizooplants.data.Exhibit"/>
+
         <action
             android:id="@+id/action_plantsFragment_to_plantsDetailFragment"
             app:destination="@id/plantsDetailFragment"
@@ -34,6 +43,16 @@
     <fragment
         android:id="@+id/plantsDetailFragment"
         android:name="ca.pet.taipeizooplants.plants.PlantsDetailFragment"
-        android:label="fragment_plants"
-        tools:layout="@layout/fragment_plants" />
+        android:label="{dynamicTitle}"
+        tools:layout="@layout/fragment_plants" >
+
+        <argument
+            android:name="dynamicTitle"
+            app:argType="string" />
+
+        <argument
+            android:name="plants"
+            app:argType="ca.pet.taipeizooplants.data.Plants"/>
+
+    </fragment>
 </navigation>

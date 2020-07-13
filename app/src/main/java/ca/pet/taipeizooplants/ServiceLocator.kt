@@ -7,6 +7,7 @@ import ca.pet.taipeizooplants.data.source.local.ExhibitLocalDataSource
 import ca.pet.taipeizooplants.data.source.local.PlantsLocalDataSource
 import ca.pet.taipeizooplants.data.source.local.TaipeiZooPlantsDatabase
 import ca.pet.taipeizooplants.data.source.remote.FakeExhibitRemoteDataSource
+import ca.pet.taipeizooplants.data.source.remote.FakePlantsRemoteDataSource
 
 object ServiceLocator {
 
@@ -31,7 +32,10 @@ object ServiceLocator {
     }
 
     private fun createPlantsRepository(context: Context): IPlantsRepository {
-        val newRepo = PlantsRepository(createPlantsLocalDataSource(context))
+        val newRepo = PlantsRepository(
+            createFakePlantsRemoteDataSource(context),
+            createPlantsLocalDataSource(context)
+        )
         plantsRepository = newRepo
         return newRepo
     }
@@ -60,6 +64,10 @@ object ServiceLocator {
         return FakeExhibitRemoteDataSource(database.exhibitDao())
     }
 
+    private fun createFakePlantsRemoteDataSource(context: Context): IPlantsDataSource {
+        val database = database ?: createDatabase(context)
+        return FakePlantsRemoteDataSource(database.plantsDao())
+    }
 
     private fun createDatabase(context: Context): TaipeiZooPlantsDatabase {
         val result = Room.databaseBuilder(

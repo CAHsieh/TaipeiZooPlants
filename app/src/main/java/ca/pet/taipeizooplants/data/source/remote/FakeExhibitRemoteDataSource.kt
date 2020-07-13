@@ -9,12 +9,13 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import java.io.BufferedInputStream
 import java.io.InputStreamReader
 
 class FakeExhibitRemoteDataSource internal constructor(
-    private val exhibitDao: ExhibitDao,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+        private val exhibitDao: ExhibitDao,
+        private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IExhibitDataSource {
 
     private val list: List<Exhibit>
@@ -30,8 +31,9 @@ class FakeExhibitRemoteDataSource internal constructor(
 
     override suspend fun retrieveExhibits(limit: Int, callback: (List<Exhibit>?) -> Unit) {
 
+        exhibitDao.insertAll(list)
+        delay(500L) //給網路一點時間
         if (limit >= list.size) {
-            exhibitDao.insertAll(list)
             callback(list)
         } else {
             callback(list.subList(0, limit))
@@ -39,7 +41,7 @@ class FakeExhibitRemoteDataSource internal constructor(
     }
 
     override suspend fun getDataCount(): Int? {
-
+        delay(500L) //給網路一點時間
         return list.size
     }
 }

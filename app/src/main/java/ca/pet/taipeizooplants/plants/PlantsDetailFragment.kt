@@ -25,8 +25,5 @@ class PlantsDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        testBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_exhibitFragment_to_plantsFragment)
-        }
     }
 }

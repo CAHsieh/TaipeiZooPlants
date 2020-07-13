@@ -1,29 +1,21 @@
 package ca.pet.taipeizooplants.data.source.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import ca.pet.taipeizooplants.data.Plants
 
 @Dao
 public interface PlantsDao {
 
-    //查詢全部資料
-    @Query("Select * from Plants")
-    fun getAll(): List<Plants>
+    @Query("Select Count(id) from plants where F_Location like :location")
+    fun getDataCount(location: String): Int
 
-    @Query("Select * from Plants Where F_Location like :location limit :limit offset :offset")
-    fun getPlantsByLocation(location: String, limit: Int, offset: Int): List<Plants>
+    @Query("Select * from plants where F_Location like :location")
+    fun loadPlants(location: String): List<Plants>
 
-    //刪除全部資料
-    @Query("Delete from Plants")
-    fun deleteAll()
-
-    @Insert
-    fun insert(vararg Plants: Plants)
-
-    @Delete
-    fun delete(vararg Plants: Plants)
-
-    @Update
-    fun update(vararg Plants: Plants)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(plants: List<Plants>)
 
 }

@@ -3,6 +3,7 @@ package ca.pet.taipeizooplants.data.source
 import ca.pet.taipeizooplants.data.Exhibit
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 
 class ExhibitRepository(
     private val exhibitRemoteDataSource: IExhibitDataSource,

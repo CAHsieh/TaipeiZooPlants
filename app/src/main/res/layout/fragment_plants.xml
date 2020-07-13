@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".plants.PlantsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:descendantFocusability="blocksDescendants">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/md_white_1000" />
+
+        <TextView
+            android:id="@+id/desView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_white_1000"
+            android:padding="@dimen/one_grid_unit"
+            android:paddingStart="@dimen/one_and_half_grid_unit"
+            android:paddingEnd="@dimen/one_and_half_grid_unit"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/exInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_white_1000"
+            android:paddingStart="@dimen/one_and_half_grid_unit"
+            android:paddingEnd="@dimen/one_and_half_grid_unit"
+            android:paddingBottom="@dimen/one_grid_unit">
+
+            <TextView
+                android:id="@+id/closedInfoView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/one_grid_unit"
+                app:layout_constraintEnd_toStartOf="@id/linkView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/categoryView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_grid_unit"
+                app:layout_constraintEnd_toEndOf="@id/closedInfoView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/closedInfoView" />
+
+            <TextView
+                android:id="@+id/linkView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical|end"
+                android:text="在網頁開啟"
+                android:textColor="@drawable/selector_url"
+                app:layout_constraintBottom_toBottomOf="@id/categoryView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/closedInfoView"
+                app:layout_constraintWidth_percent="0.3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/listHeader"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/two_and_half_grid_unit"
+            android:background="@color/md_white_1000"
+            android:gravity="center_vertical|start"
+            android:paddingStart="@dimen/two_and_half_grid_unit"
+            android:paddingEnd="@dimen/two_and_half_grid_unit"
+            android:text="植物資料"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plantsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

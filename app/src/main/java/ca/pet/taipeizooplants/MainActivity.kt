@@ -1,6 +1,8 @@
 package ca.pet.taipeizooplants
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,6 +19,18 @@ class MainActivity : AppCompatActivity() {
         toolBar.setupWithNavController(navController, appBarConfiguration)
 
     }
+
+
+    fun showLoading() {
+        loadingView.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    fun dismissLoading(){
+        loadingView.visibility = View.GONE
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
 }
 
-const val KEY_EXHIBIT="KEY_EXHIBIT"
+const val KEY_EXHIBIT = "KEY_EXHIBIT"

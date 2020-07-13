@@ -5,8 +5,8 @@ import ca.pet.taipeizooplants.data.source.IExhibitDataSource
 import kotlinx.coroutines.*
 
 class ExhibitLocalDataSource internal constructor(
-    private val exhibitDao: ExhibitDao,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+        private val exhibitDao: ExhibitDao,
+        private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IExhibitDataSource {
 
     override suspend fun getDataCount(): Int? {
@@ -25,7 +25,6 @@ class ExhibitLocalDataSource internal constructor(
                 exhibitDao.loadExhibits(limit, 0)
             }
         }
-
         callback(databaseJob.await())
     }
 }
