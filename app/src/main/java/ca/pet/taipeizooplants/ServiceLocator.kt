@@ -2,9 +2,11 @@ package ca.pet.taipeizooplants
 
 import android.content.Context
 import androidx.room.Room
-import ca.pet.taipeizooplants.data.source.ExhibitRepository
-import ca.pet.taipeizooplants.data.source.PlantsRepository
-import ca.pet.taipeizooplants.data.source.local.*
+import ca.pet.taipeizooplants.data.source.*
+import ca.pet.taipeizooplants.data.source.local.ExhibitLocalDataSource
+import ca.pet.taipeizooplants.data.source.local.PlantsLocalDataSource
+import ca.pet.taipeizooplants.data.source.local.TaipeiZooPlantsDatabase
+import ca.pet.taipeizooplants.data.source.remote.FakeExhibitRemoteDataSource
 
 object ServiceLocator {
 
@@ -35,27 +37,35 @@ object ServiceLocator {
     }
 
     private fun createExhibitRepository(context: Context): IExhibitRepository {
-        val newRepo = ExhibitRepository(createExhibitLocalDataSource(context))
+        val newRepo = ExhibitRepository(
+            createFakeExhibitRemoteDataSource(context),
+            createExhibitLocalDataSource(context)
+        )
         exhibitRepository = newRepo
         return newRepo
     }
 
-    private fun createPlantsLocalDataSource(context: Context): IPlantsDatasource {
+    private fun createPlantsLocalDataSource(context: Context): IPlantsDataSource {
         val database = database ?: createDatabase(context)
         return PlantsLocalDataSource(database.plantsDao())
     }
 
-    private fun createExhibitLocalDataSource(context: Context): IExhibitDatasource {
+    private fun createExhibitLocalDataSource(context: Context): IExhibitDataSource {
         val database = database ?: createDatabase(context)
         return ExhibitLocalDataSource(database.exhibitDao())
+    }
+
+    private fun createFakeExhibitRemoteDataSource(context: Context): IExhibitDataSource {
+        val database = database ?: createDatabase(context)
+        return FakeExhibitRemoteDataSource(database.exhibitDao())
     }
 
 
     private fun createDatabase(context: Context): TaipeiZooPlantsDatabase {
         val result = Room.databaseBuilder(
-                context.applicationContext,
-                TaipeiZooPlantsDatabase::class.java,
-                "TaipeiZooPlants.db"
+            context.applicationContext,
+            TaipeiZooPlantsDatabase::class.java,
+            "TaipeiZooPlants.db"
         ).build()
         database = result
         return result

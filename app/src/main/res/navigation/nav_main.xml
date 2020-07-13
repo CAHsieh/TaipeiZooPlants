@@ -10,7 +10,7 @@
         android:label="@string/label_taipei_zoo"
         tools:layout="@layout/fragment_plants_detail">
         <action
-            android:id="@+id/action_mainFragment_to_exhibitFragment"
+            android:id="@+id/action_exhibitFragment_to_plantsFragment"
             app:destination="@id/plantsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -24,7 +24,7 @@
         android:label="Exhibit"
         tools:layout="@layout/fragment_exhibit">
         <action
-            android:id="@+id/action_exhibitFragment_to_plantsFragment"
+            android:id="@+id/action_plantsFragment_to_plantsDetailFragment"
             app:destination="@id/plantsDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"

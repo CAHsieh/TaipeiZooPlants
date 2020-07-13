@@ -18,3 +18,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+const val KEY_EXHIBIT="KEY_EXHIBIT"

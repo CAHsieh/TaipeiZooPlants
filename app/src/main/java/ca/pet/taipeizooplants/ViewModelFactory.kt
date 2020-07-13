@@ -5,8 +5,8 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import ca.pet.taipeizooplants.data.source.local.IExhibitRepository
-import ca.pet.taipeizooplants.data.source.local.IPlantsRepository
+import ca.pet.taipeizooplants.data.source.IExhibitRepository
+import ca.pet.taipeizooplants.data.source.IPlantsRepository
 import ca.pet.taipeizooplants.exhibit.ExhibitViewModel
 import ca.pet.taipeizooplants.plants.PlantsDetailViewModel
 import ca.pet.taipeizooplants.plants.PlantsViewModel

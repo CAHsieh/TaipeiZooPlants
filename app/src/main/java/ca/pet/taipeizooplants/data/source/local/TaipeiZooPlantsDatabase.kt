@@ -10,3 +10,5 @@ abstract class TaipeiZooPlantsDatabase : RoomDatabase() {
     abstract fun exhibitDao(): ExhibitDao
     abstract fun plantsDao(): PlantsDao
 }
+
+const val DB_QUERY_TIMEOUT = 3000L
