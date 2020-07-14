@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import ca.pet.taipeizooplants.R
 import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.fragment_plants_detail.*
@@ -18,7 +19,8 @@ class PlantsDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        sharedElementEnterTransition = TransitionInflater.from(requireContext())
+            .inflateTransition(R.transition.transition_thumbnail)
         return inflater.inflate(R.layout.fragment_plants_detail, container, false)
     }
 

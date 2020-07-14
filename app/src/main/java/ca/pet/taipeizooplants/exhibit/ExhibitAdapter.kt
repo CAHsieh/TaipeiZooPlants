@@ -15,7 +15,7 @@ class ExhibitAdapter(
     private val exhibitList: MutableList<Exhibit> = mutableListOf()
 ) : RecyclerView.Adapter<ExhibitAdapter.ViewHolder>() {
 
-    var onExhibitClickListener: ((Exhibit) -> Unit)? = null
+    var onExhibitClickListener: ((View, Exhibit) -> Unit)? = null
 
     var needMoreDataCallback: (() -> Unit)? = null
 
@@ -47,6 +47,7 @@ class ExhibitAdapter(
         fun bind(exhibit: Exhibit) {
             itemView.titleView.text = exhibit.E_Name
             itemView.desView.text = exhibit.E_Info
+            itemView.desView.transitionName = "exhibitDes_${adapterPosition}"
 
             itemView.closedInfoView.text =
                 if (exhibit.E_Memo.isNotBlank()) {
@@ -56,9 +57,10 @@ class ExhibitAdapter(
                 }
 
             itemView.thumbnail.load(exhibit.E_Pic_URL)
+            itemView.thumbnail.transitionName = "thumbnailExhibit_${adapterPosition}"
 
             itemView.setOnClickListener {
-                onExhibitClickListener?.let { callback -> callback(exhibit) }
+                onExhibitClickListener?.let { callback -> callback(it, exhibit) }
             }
         }
     }

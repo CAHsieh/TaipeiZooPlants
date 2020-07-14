@@ -10,15 +10,18 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
 import ca.pet.taipeizooplants.MainActivity
 import ca.pet.taipeizooplants.R
 import ca.pet.taipeizooplants.data.Exhibit
 import ca.pet.taipeizooplants.utils.getViewModelFactory
 import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.fragment_plants.*
+import kotlinx.android.synthetic.main.item_plants.view.*
 
 class PlantsFragment : Fragment() {
 
@@ -28,11 +31,13 @@ class PlantsFragment : Fragment() {
 
     private lateinit var adapter: PlantsAdapter
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        sharedElementEnterTransition = TransitionInflater.from(requireContext())
+            .inflateTransition(R.transition.transition_thumbnail)
         return inflater.inflate(R.layout.fragment_plants, container, false)
     }
 
@@ -88,12 +93,16 @@ class PlantsFragment : Fragment() {
     }
 
     private fun setCallback() {
-        adapter.onPlantsClickListener = { plants ->
+        adapter.onPlantsClickListener = { view, plants ->
             val action = PlantsFragmentDirections.actionPlantsFragmentToPlantsDetailFragment(
                 plants.F_Name_Ch,
                 plants
             )
-            findNavController().navigate(action)
+            val extras = FragmentNavigatorExtras(
+                view.thumbnail to "thumbnailPlants",
+                view.nameView to "plantsName"
+            )
+            findNavController().navigate(action, extras)
         }
     }
 }

@@ -15,7 +15,7 @@ class PlantsAdapter(
     private val plantsList: MutableList<Plants> = mutableListOf()
 ) : RecyclerView.Adapter<PlantsAdapter.ViewHolder>() {
 
-    var onPlantsClickListener: ((Plants) -> Unit)? = null
+    var onPlantsClickListener: ((View, Plants) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
@@ -37,12 +37,14 @@ class PlantsAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(plants: Plants) {
             itemView.nameView.text = plants.F_Name_Ch
+            itemView.nameView.transitionName = "plantName_${adapterPosition}"
             itemView.nickNameView.text = plants.F_AlsoKnown
 
             itemView.thumbnail.load(plants.F_Pic01_URL)
+            itemView.thumbnail.transitionName = "thumbnailPlants_${adapterPosition}"
 
             itemView.setOnClickListener {
-                onPlantsClickListener?.let { callback -> callback(plants) }
+                onPlantsClickListener?.let { callback -> callback(it, plants) }
             }
         }
     }
