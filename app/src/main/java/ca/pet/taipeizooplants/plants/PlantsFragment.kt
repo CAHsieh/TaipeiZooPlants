@@ -1,6 +1,5 @@
 package ca.pet.taipeizooplants.plants
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -41,7 +40,7 @@ class PlantsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initExhibitInfo(view.context, args.exhibit)
+        initExhibitInfo(args.exhibit)
 
         initView()
 
@@ -58,9 +57,9 @@ class PlantsFragment : Fragment() {
         viewModel.start(args.dynamicTitle)
     }
 
-    private fun initExhibitInfo(context: Context, exhibit: Exhibit) {
+    private fun initExhibitInfo(exhibit: Exhibit) {
 
-        Glide.with(context)
+        Glide.with(requireContext())
             .load(exhibit.E_Pic_URL)
             .placeholder(R.drawable.loading)
             .centerCrop()
@@ -89,12 +88,11 @@ class PlantsFragment : Fragment() {
         plantsRecyclerView.setHasFixedSize(true)
         adapter = PlantsAdapter()
         plantsRecyclerView.adapter = adapter
-        ViewCompat.setNestedScrollingEnabled(plantsRecyclerView,false)
+        ViewCompat.setNestedScrollingEnabled(plantsRecyclerView, false)
     }
 
     private fun setCallback() {
         adapter.onPlantsClickListener = { plants ->
-            (activity as MainActivity).showLoading()
             val action = PlantsFragmentDirections.actionPlantsFragmentToPlantsDetailFragment(
                 plants.F_Name_Ch,
                 plants
