@@ -30,7 +30,7 @@
 
         <argument
             android:name="exhibit"
-            app:argType="ca.pet.taipeizooplants.data.Exhibit"/>
+            app:argType="ca.pet.taipeizooplants.data.Exhibit" />
 
         <action
             android:id="@+id/action_plantsFragment_to_plantsDetailFragment"
@@ -44,7 +44,7 @@
         android:id="@+id/plantsDetailFragment"
         android:name="ca.pet.taipeizooplants.plants.PlantsDetailFragment"
         android:label="{dynamicTitle}"
-        tools:layout="@layout/fragment_plants" >
+        tools:layout="@layout/fragment_plants">
 
         <argument
             android:name="dynamicTitle"
@@ -52,7 +52,7 @@
 
         <argument
             android:name="plants"
-            app:argType="ca.pet.taipeizooplants.data.Plants"/>
+            app:argType="ca.pet.taipeizooplants.data.Plants" />
 
     </fragment>
 </navigation>

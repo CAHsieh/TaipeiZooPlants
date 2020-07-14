@@ -23,11 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     fun showLoading() {
         loadingView.visibility = View.VISIBLE
-        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
     }
 
-    fun dismissLoading(){
+    fun dismissLoading() {
         loadingView.visibility = View.GONE
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }

@@ -14,8 +14,8 @@ import java.io.BufferedInputStream
 import java.io.InputStreamReader
 
 class FakeExhibitRemoteDataSource internal constructor(
-        private val exhibitDao: ExhibitDao,
-        private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val exhibitDao: ExhibitDao,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IExhibitDataSource {
 
     private val list: List<Exhibit>

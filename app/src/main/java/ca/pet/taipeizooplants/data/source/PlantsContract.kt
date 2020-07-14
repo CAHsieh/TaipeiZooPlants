@@ -9,3 +9,8 @@ interface IPlantsDataSource {
     suspend fun getDataCount(location: String): Int?
 
 }
+
+interface IPlantsRepository {
+
+    suspend fun retrievePlants(location: String, callback: (List<Plants>) -> Unit)
+}
