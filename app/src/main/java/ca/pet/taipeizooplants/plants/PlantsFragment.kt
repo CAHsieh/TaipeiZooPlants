@@ -17,7 +17,7 @@ import ca.pet.taipeizooplants.MainActivity
 import ca.pet.taipeizooplants.R
 import ca.pet.taipeizooplants.data.Exhibit
 import ca.pet.taipeizooplants.utils.getViewModelFactory
-import com.bumptech.glide.Glide
+import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.fragment_plants.*
 
 class PlantsFragment : Fragment() {
@@ -59,11 +59,7 @@ class PlantsFragment : Fragment() {
 
     private fun initExhibitInfo(exhibit: Exhibit) {
 
-        Glide.with(requireContext())
-            .load(exhibit.E_Pic_URL)
-            .placeholder(R.drawable.loading)
-            .centerCrop()
-            .into(thumbnail)
+        thumbnail.load(exhibit.E_Pic_URL)
 
         desView.text = exhibit.E_Info
         closedInfoView.text =

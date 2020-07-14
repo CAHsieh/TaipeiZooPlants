@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.pet.taipeizooplants.R
 import ca.pet.taipeizooplants.data.Plants
 import ca.pet.taipeizooplants.utils.DiffUtilCallbackImpl
-import com.bumptech.glide.Glide
+import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.item_plants.view.*
 
 class PlantsAdapter(
@@ -39,11 +39,7 @@ class PlantsAdapter(
             itemView.nameView.text = plants.F_Name_Ch
             itemView.nickNameView.text = plants.F_AlsoKnown
 
-            Glide.with(itemView.context)
-                .load(plants.F_Pic01_URL)
-                .placeholder(R.drawable.loading)
-                .fitCenter()
-                .into(itemView.thumbnail)
+            itemView.thumbnail.load(plants.F_Pic01_URL)
 
             itemView.setOnClickListener {
                 onPlantsClickListener?.let { callback -> callback(plants) }

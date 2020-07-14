@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import ca.pet.taipeizooplants.R
-import com.bumptech.glide.Glide
+import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.fragment_plants_detail.*
 
 class PlantsDetailFragment : Fragment() {
@@ -27,11 +27,7 @@ class PlantsDetailFragment : Fragment() {
 
         val plants = args.plants
 
-        Glide.with(requireContext())
-            .load(plants.F_Pic01_URL)
-            .centerCrop()
-            .placeholder(R.drawable.loading)
-            .into(thumbnail)
+        thumbnail.load(plants.F_Pic01_URL)
 
         nameZh.text = plants.F_Name_Ch
         nameEn.text = plants.F_Name_En

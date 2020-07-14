@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.pet.taipeizooplants.R
 import ca.pet.taipeizooplants.data.Exhibit
 import ca.pet.taipeizooplants.utils.DiffUtilCallbackImpl
-import com.bumptech.glide.Glide
+import ca.pet.taipeizooplants.utils.load
 import kotlinx.android.synthetic.main.item_exhibit.view.*
 
 class ExhibitAdapter(
@@ -55,11 +55,7 @@ class ExhibitAdapter(
                     "無休館資訊"
                 }
 
-            Glide.with(itemView.context)
-                .load(exhibit.E_Pic_URL)
-                .placeholder(R.drawable.loading)
-                .fitCenter()
-                .into(itemView.thumbnail)
+            itemView.thumbnail.load(exhibit.E_Pic_URL)
 
             itemView.setOnClickListener {
                 onExhibitClickListener?.let { callback -> callback(exhibit) }
