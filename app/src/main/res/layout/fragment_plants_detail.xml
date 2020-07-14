@@ -1,18 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".plants.PlantsDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="@dimen/two_grid_unit"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/nameZh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="九芎" />
+
+        <TextView
+            android:id="@+id/nameEn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="Subcostate Crape Myrtle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:text="別名" />
+
+        <TextView
+            android:id="@+id/nickName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            tools:text="苞飯花、拘那花、小果紫薇、南紫薇、猴不爬、怕癢樹、南紫薇、九荊、馬鈴花、蚊仔花" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:text="簡介" />
+
+        <TextView
+            android:id="@+id/brief"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            tools:text="分布於中低海拔森林及長江以南的地區，為台灣的原生樹種。主要生長在潮濕的崩塌地，有吸水保持土壤之特性，所以是良好的水土保持樹種。" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:text="辨認方式" />
+
+        <TextView
+            android:id="@+id/feature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            tools:text="紅褐色的樹皮剝落後呈灰白色，樹幹光滑堅硬。葉有極短的柄，長橢圓形或卵形，全綠，葉片兩端尖，秋冬轉紅。夏季6_8月開花，花冠白色，花數甚多而密生於枝端，花為圓錐花序頂生，花瓣有長柄，邊緣皺曲像衣裙的花邊花絲長短不一。果實為蒴果，橢圓形約6-8公厘，種子有翅。" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:text="功能性" />
+
+        <TextView
+            android:id="@+id/functional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            tools:text="1. 優良薪炭材：木質堅硬耐燒，是臺灣優良的薪炭材之一。2. 水土保持植栽：可栽植於河岸及邊坡供水土保持。3. 農具用材：木質堅硬，乾燥後不太會反翹，是做農具的用材。4. 食用性：花、根入藥，味淡微苦，敗毒散瘀，花蕾味苦有清香，可生食。葉子是長尾水青蛾幼蟲的食草。" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/two_grid_unit"
+            android:layout_marginTop="@dimen/two_grid_unit"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/two_grid_unit">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最後更新：" />
+
+            <TextView
+                android:id="@+id/lastUpdateDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017/9/4" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
